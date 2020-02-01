@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase
+    xmlns:base="clr-namespace:TaskList.Base" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TaskList.Features.TaskListView">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+        
+
+            <ListView Grid.Row="0" Grid.RowSpan="2" 
+                      ItemsSource="{Binding Items}" 
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                      HasUnevenRows="True" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Text="{Binding Title}" FontSize="18" TextColor="Red"/>
+                                <Label Grid.Row="1" Text="{Binding Description}" FontSize="14" LineBreakMode="TailTruncation" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Grid.Row="1" 
+                    CornerRadius="25" HeightRequest="50" WidthRequest="50" 
+                    BackgroundColor="Green" Text="+" TextColor="White" FontSize="25"
+                    Command="{Binding AddTaskCommand}"
+                    Margin="20, 40"
+                    HorizontalOptions="End" VerticalOptions="End"/>
+        </Grid>
+    </ContentPage.Content>
+</base:ContentPageBase>

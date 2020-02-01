@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase
+    xmlns:base="clr-namespace:TaskList.Base" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TaskList.Features.TaskDetailView">
+    <ContentPage.Content>
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Text="Title" Grid.Row="0"/>
+            <Entry Text="{Binding Title, Mode=TwoWay}" Grid.Row="1"
+                   HorizontalOptions="FillAndExpand" />
+
+            <Label Text="Description" Margin="0, 10, 0, 0" Grid.Row="2"/>
+            <Editor Text="{Binding Description, Mode=TwoWay}" Grid.Row="3"
+                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+            <Grid Grid.Row="4" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Guardar" Grid.Column="0" TextColor="Green" Command="{Binding SaveTaskCommand}" />
+                <Button Text="Eliminar" Grid.Column="1" TextColor="Red" Command="{Binding RemoveTaskCommand}" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</base:ContentPageBase>
